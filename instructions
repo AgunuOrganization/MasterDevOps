@@ -1,0 +1,62 @@
+##create a ConfigMap from literal values—from-literal
+kubectl create configmap literal-data --from-literal key1=value1 --from-literal key2=value2
+##Get ConfigMap via CLI.
+kubectl get configmap <config-map_Name> -o yaml/json
+Execute Command:
+kubectl create configmap <Config-map-Name> —fromfile=<FilePath> 
+Describe Config Map:
+kubectl describe configmap <Config-map-Name>
+##Create Config Map from Literal.
+kubectl create configmap <config-map-Name> --fromliteral=font.size=14px —from-literal=color.default=green
+##Get the Detailed Description of Config-map.
+kubectl get configmap <config-map-Name> -o yaml/json
+
+##yaml files configmap
+mkdir configmap
+vi front-end-config
+color.primary=purple
+color.brand=yellow
+font.size.default = 14px
+kubectl create configmap front-end-config --from-file=front-end-config 
+##Describe Config Map:
+kubectl describe configmap front-end-config
+
+##Create Config Map from Literal.
+kubectl create configmap agunuconfigmap --fromliteral=font.size=14px —from-literal=color.default=green
+kubectl get configmap agunuconfigmap -o yaml
+kubectl get configmap agunuconfigmap -o json
+
+##Create configmap Manifest File first.
+➤ Execute Command:
+kubectl create configmap -f file_name
+vi congigmapyml.yml
+
+--- 
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: simple-confimap
+  namespace: default
+data: 
+  strategy.type: HFT
+  strategy.maxVolume: "3000"
+  strategy.risk: high
+  
+/////////////////////////////////////////////////////////////
+--- 
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: ui-config
+  namespace: default
+data: 
+  FONT_DEFAULT_COLOR: green
+  FONT_DEFAULT_SIZE: 14px
+////////////////////////////////////////////////////
+  
+  
+  kkk
+  
+  
+  
+  
